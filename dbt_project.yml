@@ -1,0 +1,97 @@
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'dbt_enterprise_project'
+version: '1.0.0'
+config-version: 2
+
+# Define variables here
+vars:
+  # Environment name. Examples:  dev, prod or starter_dev, starter_prod
+  env_name: 'dev'
+  time_adj: '3600'
+
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'dbt-enterprise-project'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["data","profiling"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_modules"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+models:
+  dbt_enterprise_project:
+    prepare:
+      +database: |
+        {% if target.name == 'local' %}
+          {{env_var('DBT_SNOWFLAKE_DATABASE')}}
+        {% elif target.name == 'dev' %}
+          DEV_ENTERPRISE_PREPARE
+        {% elif target.name == 'prod' %}
+          PROD_ENTERPRISE_PREPARE
+        {% endif %}
+
+    normalize:
+      +database: |
+        {% if target.name == 'local' %}
+          {{env_var('DBT_SNOWFLAKE_DATABASE')}}
+        {% elif target.name == 'dev' %}
+          DEV_ENTERPRISE_NORMALIZE
+        {% elif target.name == 'prod' %}
+          PROD_ENTERPRISE_NORMALIZE
+        {% endif %}
+
+    integrate:
+      +database: |
+        {% if target.name == 'local' %}
+          {{env_var('DBT_SNOWFLAKE_DATABASE')}}
+        {% elif target.name == 'dev' %}
+          DEV_ENTERPRISE_INTEGRATE
+        {% elif target.name == 'prod' %}
+          PROD_ENTERPRISE_INTEGRATE
+        {% endif %}
+
+    marts:
+      enterprise:
+        +database: |
+          {% if target.name == 'local' %}
+            {{env_var('DBT_SNOWFLAKE_DATABASE')}}
+          {% elif target.name == 'dev' %}
+            DEV_ENTERPRISE_MART
+          {% elif target.name == 'prod' %}
+            PROD_ENTERPRISE_MART
+          {% endif %}
+    
+    governance:
+      +database: |
+        {% if target.name == 'local' %}
+          {{env_var('DBT_SNOWFLAKE_DATABASE')}}
+        {% elif target.name == 'dev' %}
+         DEV_GOVERNANCE
+        {% elif target.name == 'prod' %}
+         PROD_GOVERNANCE
+        {% endif %}
+
+  +persist_docs:
+    relation: false # enables snowflake COMMENT on TABLES and VIEWS
+    columns: false  # enables snowflake COMMENT on COLUMNS for TABLES only! Doesn't work for snowflake VIEWS!
+
+#on-run-end: 
+ # - '{{ sp_customer_dimension()}}'
+ # - '{{ sp_collection_detail()}}'
+ # - '{{ sp_insurance_dimension_data_population()}}'
+ # - '{{ sp_payment_schedule()}}' 
+ # - '{{ sp_load_loans()}}'

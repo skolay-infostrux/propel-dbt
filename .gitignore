@@ -1,0 +1,16 @@
+# Log files
+*.log
+
+# dbt specific
+target/
+logs/
+dbt_packages/
+dbt_modules/
+.user.yml
+
+# Virtual Environments
+.venv
+venv/
+.env
+setup_python_venv.sh
+

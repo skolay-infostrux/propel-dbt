@@ -1,0 +1,39 @@
+dbt-enterprise-project:
+  target: dev ##Default target
+  outputs:
+    local:
+      type: snowflake
+      threads: 8
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      
+      authenticator: externalbrowser      
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE') }}"
+      schema: "{{ env_var('DBT_SNOWFLAKE_SCHEMA') }}"
+  
+    dev:
+      type: snowflake
+      threads: 8
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE') }}"
+      schema: "{{ env_var('DBT_SNOWFLAKE_SCHEMA') }}"
+      private_key_path: "{{ env_var('DBT_SNOWFLAKE_PRIVATE_KEY_PATH') }}"
+      client_session_keep_alive: False
+
+    prod:
+      type: snowflake
+      threads: 8
+      account: "{{ env_var('PROD_DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('PROD_DBT_SNOWFLAKE_USER') }}"
+      role: "{{ env_var('PROD_DBT_SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('PROD_DBT_SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('PROD_DBT_SNOWFLAKE_WAREHOUSE') }}"
+      schema: "{{ env_var('PROD_DBT_SNOWFLAKE_SCHEMA') }}"
+      private_key_path: "{{ env_var('DBT_SNOWFLAKE_PRIVATE_KEY_PATH') }}"
+      client_session_keep_alive: False
+
