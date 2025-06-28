@@ -1,0 +1,84 @@
+table_map:
+  - source:
+      schema: dwh
+      table: fct_collection_detail
+      id: collection_id
+      # filter: "create_timestamp"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: FCT_COLLECTION_DETAIL
+      id: COLLECTION_ID
+      # filter: "CREATE_TIMESTAMP"
+
+  - source:
+      schema: dwh
+      table: dim_payment_schedule
+      id: payment_schedule_id
+      # filter: "created_datetime"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_PAYMENT_SCHEDULE
+      id: PAYMENT_SCHEDULE_ID
+      # filter: "CREATED_DATETIME"
+      
+  - source:
+      schema: dwh
+      table: dim_customer
+      id: customer_id
+      # filter: "created_date"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_CUSTOMER
+      id: CUSTOMER_ID
+      # filter: "CREATED_DATE"
+
+  - source:
+      schema: dwh
+      table: dim_payment_schedule_removed
+      id: payment_schedule_id
+      # filter: "created_datetime"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_PAYMENT_SCHEDULE_REMOVED
+      id: PAYMENT_SCHEDULE_ID
+      # filter: "CREATED_DATETIME"
+
+  - source:
+      schema: dwh
+      table: dim_loan
+      id: base_loan_id
+      # filter: "created_datetime"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_LOAN
+      id: BASE_LOAN_ID
+      # filter: "CREATED_DATETIME"
+
+  - source:
+      schema: dwh
+      table: dim_insurance_protection_plan
+      id: protection_plan_id
+      # filter: "created_datetime"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_INSURANCE_PROTECTION_PLAN
+      id: PROTECTION_PLAN_ID
+      # filter: "CREATED_DATETIME"
+
+  - source:
+      schema: dwh
+      table: dim_insurance_protection_plan_status
+      id: base_loan_id
+      # filter: "created_datetime"
+    target:
+      database: DWH_DEV
+      schema: DWH
+      table: DIM_INSURANCE_PROTECTION_PLAN_STATUS
+      id: BASE_LOAN_ID
+      # filter: "CREATED_DATETIME"

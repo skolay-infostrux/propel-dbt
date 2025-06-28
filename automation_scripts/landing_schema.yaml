@@ -1,0 +1,220 @@
+table_map:
+  - source:
+      schema: jaglms
+      table: collection_lms_loan_map
+      filter: "create_timestamp"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: collection_lms_loan_map
+      filter: '"create_timestamp"'
+
+  - source:
+      database: jaglms
+      table: collections
+      filter: "created_timestamp"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: collections
+      filter: '"created_timestamp"'
+
+  - source:
+      database: jaglms
+      table: lms_payment_schedules
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_payment_schedules
+
+  - source:
+      database: jaglms
+      table: lms_base_loans
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_base_loans
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_payment_schedule_items
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_payment_schedule_items
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_collection_cure_info
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_collection_cure_info
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_deferred_outgoing_email 
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_deferred_outgoing_email 
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_customer_info_flat
+      filter: "created_date"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_customer_info_flat
+      filter: '"created_date"'
+
+  - source:
+      database: jaglms
+      table: ach_transactions
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: ach_transactions
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: funding_payment_return
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: funding_payment_return
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_payment_schedule_item_metadata
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_payment_schedule_item_metadata
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: upm_organizations
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: upm_organizations
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_loan_header
+      filter: "created_date"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_loan_header
+      filter: '"created_date"'
+
+  - source:
+      database: jaglms
+      table: lms_entities
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_entities
+
+  - source:
+      database: jaglms
+      table: risk_level 
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: risk_level 
+      filter: '"created_datetime"'
+
+  - source:
+      database: jaglms
+      table: lms_loanheader_state
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lms_loanheader_state
+
+  - source:
+      database: jaglms
+      table: lead_source 
+      filter: "start_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: lead_source
+      filter: '"start_datetime"'
+
+  - source:
+      database: jaglms
+      table: loan_status_change_history 
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: jaglms
+      table: loan_status_change_history 
+
+  - source:
+      database: insurance
+      table: protection_plan  
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: insurance
+      table: protection_plan 
+      filter: '"created_datetime"'
+
+  - source:
+      database: insurance
+      table: insurance_policy 
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: insurance
+      table: insurance_policy
+      filter: '"created_datetime"'
+
+  - source:
+      database: insurance
+      table: insurance_provider  
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: insurance
+      table: insurance_provider
+      filter: '"created_datetime"'
+
+  - source:
+      database: insurance
+      table: protection_plan_status 
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: insurance
+      table: protection_plan_status
+
+  - source:
+      database: insurance
+      table: protection_plan_status_log  
+      filter: "created_datetime"
+    target:
+      database: DEV_ENTERPRISE_LANDING
+      schema: insurance
+      table: protection_plan_status_log
+      filter: '"created_datetime"'
